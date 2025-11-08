@@ -33,7 +33,7 @@ def main():
 
     if not prompt:
         sys.exit(
-            "Please provide a message like `--message <your_message>` or `-m <your_message>` or <your_message>."
+            "Please provide a message via a positional argument (as the first argument, without any prefix), or using `--message <your_message>` or `-m <your_message>`."
         )
     load_dotenv()
 
