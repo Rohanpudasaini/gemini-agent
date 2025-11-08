@@ -56,8 +56,8 @@ def main():
 
     print("Response:", response.text)
     if not response.usage_metadata:
-        raise ValueError("Response is missing usage metadata.")
-    if is_verbose:
+        print("Warning: Response is missing usage metadata.")
+    elif is_verbose:
         print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
         print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
 
