@@ -38,6 +38,10 @@ def main():
     load_dotenv()
 
     api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        sys.exit(
+            "Error: GEMINI_API_KEY environment variable is not set. Please set it to your Gemini API key."
+        )
 
     client = Client(api_key=api_key)
 
