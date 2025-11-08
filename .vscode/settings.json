@@ -1,0 +1,22 @@
+{
+    "python.analysis.typeCheckingMode": "standard",
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports.ruff": "always",
+          "source.fixAll.ruff": "explicit"
+        }
+      },
+    // "[python]": {
+    //     "editor.formatOnSave": true,
+    //     "editor.defaultFormatter": "charliermarsh.ruff",
+    //     "editor.codeActionsOnSave": {
+    //         "source.organizeImports": "explicit",
+    //         "source.fixAll": "explicit",
+    //         "source.fixAll.ruff": true
+    //     }
+    // },
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true
+}
