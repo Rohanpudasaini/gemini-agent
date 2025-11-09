@@ -18,11 +18,11 @@ class TestAuthFlow:
         assert res.status_code == 200
         token = res.json()["access_token"]
         assert token
-        pytest.token = token  # Store token for later tests
+        pytest.token = token  # type: ignore # Store token for later tests
 
     def test_protected_route(self, client):
         # Access protected route
-        headers = {"Authorization": f"Bearer {pytest.token}"}
+        headers = {"Authorization": f"Bearer {pytest.token}"}  # type: ignore
         res = client.get("/me", headers=headers)
         assert res.status_code == 200
         assert res.json()["email"] == "test@example.com"
