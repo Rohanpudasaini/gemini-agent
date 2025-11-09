@@ -3,20 +3,20 @@ import os
 
 def get_files_info(working_directory, directory=None):
     working_directory = os.path.abspath(working_directory)
-    absulate_path = os.path.abspath(
+    absolute_path = os.path.abspath(
         os.path.join(working_directory, directory) if directory else working_directory
     )
     print(f"Working Directory: {working_directory}")
-    print(f"Absolute Path: {absulate_path}")
-    if not absulate_path.startswith(working_directory) or ".." in os.path.relpath(
-        absulate_path, working_directory
+    print(f"Absolute Path: {absolute_path}")
+    if not absolute_path.startswith(working_directory) or ".." in os.path.relpath(
+        absolute_path, working_directory
     ):
         return "Directory traversal detected"
 
-    contents = os.listdir(absulate_path)
+    contents = os.listdir(absolute_path)
     files_info = []
     for item in contents:
-        item_path = os.path.join(absulate_path, item)
+        item_path = os.path.join(absolute_path, item)
         is_file = os.path.isfile(item_path)
         size = os.path.getsize(item_path) if is_file else 0
         files_info.append({"name": item, "is_file": is_file, "size": size})
