@@ -15,7 +15,7 @@ TestingSessionLocal = sessionmaker(bind=engine)
 Base.metadata.create_all(bind=engine)
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="class")
 def db_session():
     """Creates a new database session for a test."""
     connection = engine.connect()
@@ -27,7 +27,7 @@ def db_session():
     connection.close()
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="class")
 def client(db_session):
     """Overrides FastAPI's get_db dependency with test DB."""
 
