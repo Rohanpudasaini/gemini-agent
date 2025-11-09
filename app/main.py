@@ -140,7 +140,6 @@ def login(
     if not user:
         print("No user")
         raise HTTPException(status_code=401, detail="Invalid email or password")
-    print("password", form_data.password)
     if str(user.password) != str(hash_password(form_data.password)):
         raise HTTPException(status_code=401, detail="Invalid email or password")
 
