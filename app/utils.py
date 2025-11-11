@@ -1,5 +1,6 @@
+import datetime
 import hashlib
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 import jwt
 from fastapi import HTTPException
@@ -17,7 +18,7 @@ def hash_password(password: str) -> str:
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
-    expire = datetime.utcnow() + (
+    expire = datetime.datetime.now(datetime.UTC) + (
         expires_delta or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     )
     to_encode.update({"exp": expire})
