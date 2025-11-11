@@ -25,8 +25,7 @@ def get_files_info(directory: str) -> str:
     absolute_path = os.path.abspath(
         os.path.join(working_directory, directory) if directory else working_directory
     )
-    print(f"Working Directory: {working_directory}")
-    print(f"Absolute Path: {absolute_path}")
+    # Debug print statements removed; use logging if needed.
     if not absolute_path.startswith(working_directory) or ".." in os.path.relpath(
         absolute_path, working_directory
     ):
