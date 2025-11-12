@@ -69,9 +69,35 @@ def get_file_content(file_path: str) -> str:
             content = file.read()
         return content
     except FileNotFoundError:
-        return "File not found"
+        return "Error while reading file: File not found"
     except Exception as e:
-        return str(e)
+        return f"Error while reading file: {str(e)}"
 
 
-print(get_file_content("../../../functions/utils.py"))
+def write_file_content(file_path: str, content: str) -> str:
+    """
+    Write content to a specific file.
+    This tool safely writes text content to a file while preventing directory traversal attacks.
+    It ensures the file is within the allowed working directory (current directory).
+
+    **Usage:**
+    - Use this tool when you need to write or update the content of a file.
+    - Always provide the target file path relative to the current directory (`file_path` argument).
+    Args:
+        file_path (str): The relative path to the file to write, starting from the current directory.
+        content (str): The content to write to the file.
+    """
+    working_directory = os.path.abspath(".")
+    absolute_file_path = os.path.abspath(os.path.join(working_directory, file_path))
+    parent_directory = os.path.dirname(absolute_file_path)
+
+    os.makedirs(parent_directory, exist_ok=True)
+
+    if not absolute_file_path.startswith(working_directory):
+        return "Requested directory is out of scope for this tool"
+    try:
+        with open(absolute_file_path, "w") as file:
+            file.write(content)
+        return "File written successfully"
+    except Exception as e:
+        return f"Error while writing file: {str(e)}"
