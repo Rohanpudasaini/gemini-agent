@@ -111,7 +111,7 @@ def write_file_content(file_path: str, content: str) -> str:
             backup_path = absolute_file_path + ".bak"
             shutil.copy2(absolute_file_path, backup_path)
 
-        with open(absolute_file_path, "w") as file:
+        with open(absolute_file_path, "w", encoding="utf-8") as file:
             file.write(content)
         return "File written successfully"
     except Exception as e:
