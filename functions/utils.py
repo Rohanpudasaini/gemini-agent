@@ -1,4 +1,6 @@
-def read_response(response) -> str:
+from typing import Sequence, Any
+
+def read_response(response: Sequence[Any]) -> str:
     result = []
     for number in range(len(response)):
         if response[number].content.parts[0].text:  # type: ignore
