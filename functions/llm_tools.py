@@ -133,6 +133,10 @@ def append_file_content(file_path: str, content: str) -> str:
     Args:
         file_path (str): The relative path to the file to append.
         content (str): The content to append to the file.
+
+    Returns:
+        str: A message indicating whether the content was appended successfully (and a backup was created)
+            or if an error occurred.
     """
     working_directory = os.path.abspath(".")
     absolute_file_path = os.path.abspath(os.path.join(working_directory, file_path))
