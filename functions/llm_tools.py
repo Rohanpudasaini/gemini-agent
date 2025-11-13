@@ -134,9 +134,6 @@ def append_file_content(file_path: str, content: str) -> str:
         file_path (str): The relative path to the file to append.
         content (str): The content to append to the file.
     """
-    import os
-    import shutil
-
     working_directory = os.path.abspath(".")
     absolute_file_path = os.path.abspath(os.path.join(working_directory, file_path))
     parent_directory = os.path.dirname(absolute_file_path)
