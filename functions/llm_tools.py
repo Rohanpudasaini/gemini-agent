@@ -147,13 +147,17 @@ def append_file_content(file_path: str, content: str) -> str:
     os.makedirs(parent_directory, exist_ok=True)
     try:
         # Create a backup before appending
-        if os.path.exists(absolute_file_path):
+        file_existed = os.path.exists(absolute_file_path)
+        if file_existed:
             backup_path = absolute_file_path + ".bak"
             shutil.copy2(absolute_file_path, backup_path)
 
         with open(absolute_file_path, "a", encoding="utf-8") as file:
             file.write(content)
 
-        return "Content appended successfully (backup created)."
+        if file_existed:
+            return "Content appended successfully (backup created)."
+        else:
+            return "Content appended successfully."
     except Exception as e:
         return f"Error while appending to file: {str(e)}"
