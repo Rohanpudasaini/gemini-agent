@@ -66,7 +66,7 @@ def get_file_content(file_path: str) -> str:
     if not absolute_file_path.startswith(working_directory) or ".." in os.path.relpath(absolute_file_path, working_directory):
         return "Requested directory is out of scope for this tool"
     try:
-        with open(absolute_file_path, "r") as file:
+        with open(absolute_file_path, "r", encoding="utf-8") as file:
             content = file.read()
         return content
     except FileNotFoundError:
