@@ -141,11 +141,10 @@ def append_file_content(file_path: str, content: str) -> str:
     absolute_file_path = os.path.abspath(os.path.join(working_directory, file_path))
     parent_directory = os.path.dirname(absolute_file_path)
 
-    os.makedirs(parent_directory, exist_ok=True)
-
     if not absolute_file_path.startswith(working_directory):
         return "Requested directory is out of scope for this tool."
 
+    os.makedirs(parent_directory, exist_ok=True)
     try:
         # Create a backup before appending
         if os.path.exists(absolute_file_path):
